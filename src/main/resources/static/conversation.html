@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Equity Research Agent</title>
+  <link rel="stylesheet" href="/conversation.css">
+</head>
+<body>
+  <main class="shell">
+    <section class="topbar">
+      <div class="brand">
+        <span class="brand-mark">ER</span>
+        <div>
+          <p class="eyebrow">Equity Research Agent</p>
+          <h1 id="page-title">投研助手</h1>
+        </div>
+      </div>
+      <div class="auth-area">
+        <span id="user-badge" class="user-badge hidden"></span>
+        <button id="preferences-button" type="button" class="secondary">偏好</button>
+        <button id="auth-button" type="button" class="secondary">登录</button>
+      </div>
+    </section>
+
+    <section id="message-area" class="message-area hidden"></section>
+
+    <section class="workspace">
+      <aside class="history-panel" aria-label="历史对话">
+        <div class="history-head">
+          <div>
+            <h2>历史对话</h2>
+            <span id="history-count">0 个会话</span>
+          </div>
+          <button id="sidebar-new-conversation-button" type="button">新建</button>
+        </div>
+        <div class="history-search-wrap">
+          <input id="history-search" type="search" placeholder="搜索历史对话">
+        </div>
+        <nav id="conversation-list" class="conversation-list" aria-label="Conversation history"></nav>
+      </aside>
+
+      <section class="chat-panel" aria-live="polite">
+        <div class="chat-header">
+          <div>
+            <h2>今天想研究什么？</h2>
+            <span id="message-count">0 条消息</span>
+          </div>
+          <button id="new-conversation-button" type="button" class="secondary">新会话</button>
+        </div>
+
+        <div id="message-list" class="message-list"></div>
+
+        <form id="send-form" class="send-form">
+          <label for="message-input">输入问题</label>
+          <div class="send-row">
+            <textarea id="message-input" rows="3" placeholder="例如：现在适合研究苹果吗？或者：帮我比较英伟达和微软的长期投资逻辑"></textarea>
+            <button type="submit">发送</button>
+          </div>
+        </form>
+      </section>
+    </section>
+  </main>
+
+  <div id="preferences-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="preferences-title">
+    <form id="preferences-form" class="preferences-modal">
+      <div class="modal-head">
+        <div>
+          <p class="eyebrow">Memory</p>
+          <h2 id="preferences-title">投研偏好</h2>
+        </div>
+        <button id="preferences-close-button" type="button" class="secondary">关闭</button>
+      </div>
+
+      <label class="checkbox-row">
+        <input id="preference-enabled" type="checkbox">
+        <span>启用偏好记忆</span>
+      </label>
+
+      <div class="preference-grid">
+        <label>
+          默认市场
+          <select id="preference-market">
+            <option value="">不设置</option>
+            <option value="US">美股</option>
+            <option value="HK">港股</option>
+            <option value="CN">A 股</option>
+          </select>
+        </label>
+        <label>
+          风险偏好
+          <select id="preference-risk">
+            <option value="">不设置</option>
+            <option value="LOW">保守</option>
+            <option value="MEDIUM">平衡</option>
+            <option value="HIGH">进取</option>
+          </select>
+        </label>
+        <label>
+          投资期限
+          <select id="preference-horizon">
+            <option value="">不设置</option>
+            <option value="SHORT_TERM">短期</option>
+            <option value="MEDIUM_TERM">中期</option>
+            <option value="LONG_TERM">长期</option>
+          </select>
+        </label>
+        <label>
+          报告风格
+          <select id="preference-style">
+            <option value="">不设置</option>
+            <option value="CONCISE">简洁结论</option>
+            <option value="DETAILED_MEMO">详细备忘录</option>
+            <option value="BEGINNER_FRIENDLY">新手友好</option>
+          </select>
+        </label>
+      </div>
+
+      <label>
+        关注行业
+        <input id="preference-sectors" type="text" placeholder="例如：AI, 半导体, 消费">
+      </label>
+      <label>
+        排除行业
+        <input id="preference-excluded-sectors" type="text" placeholder="例如：银行, 地产">
+      </label>
+      <label>
+        常看标的
+        <input id="preference-assets" type="text" placeholder="例如：AAPL, MSFT, QQQ">
+      </label>
+      <label>
+        备注
+        <textarea id="preference-notes" rows="3" placeholder="例如：我更关注长期配置，不希望直接给买卖建议"></textarea>
+      </label>
+
+      <div class="modal-actions">
+        <button type="submit">保存偏好</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="/conversation.js?v=20260612-memory-suggestions-1"></script>
+</body>
+</html>

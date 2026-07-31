@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Equity Research Agent Trace</title>
+  <link rel="stylesheet" href="/trace.css">
+</head>
+<body>
+  <main class="shell">
+    <section class="workspace">
+      <aside class="sidebar" aria-label="Research controls">
+        <div class="brand">
+          <span class="brand-mark">ER</span>
+          <div>
+            <h1>Research Trace</h1>
+            <p>Agent 运行轨迹与证据面板</p>
+          </div>
+        </div>
+
+        <nav class="page-nav" aria-label="Page navigation">
+          <a class="active" href="/trace.html">Trace</a>
+          <a href="/conversation.html">Conversation</a>
+        </nav>
+
+        <form id="query-form" class="control-block">
+          <label for="query-input">创建研究任务</label>
+          <textarea id="query-input" name="query" rows="5" placeholder="例如：帮我分析一下英伟达现在还能不能买"></textarea>
+          <button type="submit">创建并追踪</button>
+        </form>
+
+        <form id="job-form" class="control-block">
+          <label for="job-id-input">查看已有 Job</label>
+          <input id="job-id-input" name="jobId" placeholder="粘贴 jobId">
+          <button type="submit" class="secondary">加载 Trace</button>
+        </form>
+
+        <div class="control-block compact">
+          <label>当前 Job</label>
+          <code id="current-job-id">未选择</code>
+        </div>
+      </aside>
+
+      <section class="main-panel" aria-live="polite">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Agent Observability</p>
+            <h2 id="page-title">等待任务</h2>
+          </div>
+          <div id="status-pill" class="status-pill muted">IDLE</div>
+        </header>
+
+        <section id="message-area" class="message-area hidden"></section>
+
+        <section class="metrics-grid">
+          <article class="metric">
+            <span>工具成功</span>
+            <strong id="metric-success">0</strong>
+          </article>
+          <article class="metric">
+            <span>工具失败</span>
+            <strong id="metric-failure">0</strong>
+          </article>
+          <article class="metric">
+            <span>证据数量</span>
+            <strong id="metric-evidence">0</strong>
+          </article>
+          <article class="metric">
+            <span>研究对象</span>
+            <strong id="metric-company">-</strong>
+          </article>
+        </section>
+
+        <section id="clarification-panel" class="clarification-panel hidden">
+          <div>
+            <p class="eyebrow">Needs Clarification</p>
+            <h3>需要补充信息</h3>
+          </div>
+          <ul id="clarification-list"></ul>
+        </section>
+
+        <section class="section-band">
+          <div class="section-heading">
+            <h3>执行阶段</h3>
+            <span id="stage-count">0 stages</span>
+          </div>
+          <div id="stage-timeline" class="stage-timeline"></div>
+        </section>
+
+        <section class="section-band">
+          <div class="section-heading">
+            <h3>工具调用</h3>
+            <span id="tool-count">0 calls</span>
+          </div>
+          <div id="tool-steps" class="tool-steps"></div>
+        </section>
+
+        <section class="section-band two-column">
+          <div>
+            <div class="section-heading">
+              <h3>证据</h3>
+              <span id="evidence-group-count">0 groups</span>
+            </div>
+            <div id="evidence-groups" class="evidence-groups"></div>
+          </div>
+          <div>
+            <div class="section-heading">
+              <h3>最终报告</h3>
+              <span id="report-state">pending</span>
+            </div>
+            <div id="report-panel" class="report-panel"></div>
+          </div>
+        </section>
+
+        <section class="section-band">
+          <details>
+            <summary>Raw Agent Trace</summary>
+            <pre id="raw-trace">{}</pre>
+          </details>
+        </section>
+      </section>
+    </section>
+  </main>
+
+  <script src="/trace.js?v=20260620-agent-demo"></script>
+</body>
+</html>

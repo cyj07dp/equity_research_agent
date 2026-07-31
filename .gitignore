@@ -1,0 +1,13 @@
+.DS_Store
+target/
+.idea/
+*.iml
+.env
+*.log
+.venv*/
+.pytest_cache/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.claude/settings.local.json
+agent-service/evals/latest-report.json

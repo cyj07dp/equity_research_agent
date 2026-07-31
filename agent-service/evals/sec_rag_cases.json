@@ -1,0 +1,16 @@
+[
+  {
+    "id": "apple-risk-factors",
+    "ticker": "AAPL",
+    "query": "苹果年报里提到的主要风险和竞争压力是什么？",
+    "expectedSection": "risk_factors",
+    "mustMatchTerms": ["risk", "competition"]
+  },
+  {
+    "id": "margin-management-discussion",
+    "ticker": "AAPL",
+    "query": "管理层如何解释利润率或成本压力？",
+    "expectedSection": "mda",
+    "mustMatchTerms": ["margin"]
+  }
+]

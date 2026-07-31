@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: equity-research-agent
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/equity_research}
+    username: ${SPRING_DATASOURCE_USERNAME:equity_user}
+    password: ${SPRING_DATASOURCE_PASSWORD:equity_password}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+  flyway:
+    enabled: true
+
+server:
+  port: 8080
+
+agent:
+  service:
+    base-url: ${AGENT_SERVICE_BASE_URL:http://localhost:8000}
+    connect-timeout: ${AGENT_SERVICE_CONNECT_TIMEOUT:300s}
+    read-timeout: ${AGENT_SERVICE_READ_TIMEOUT:300s}

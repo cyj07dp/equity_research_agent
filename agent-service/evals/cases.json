@@ -1,0 +1,47 @@
+[
+  {
+    "id": "company-risk-sec",
+    "query": "帮我分析苹果最新年报里提到的主要风险",
+    "expectedTools": ["company_search", "filings_search", "sec_filing_retriever"],
+    "requiredEvidenceTypes": ["SEC_RAG"],
+    "requiredCitationDomains": ["sec.gov"],
+    "forbiddenPhrases": ["稳赚", "一定上涨", "闭眼买"]
+  },
+  {
+    "id": "broad-market-learning",
+    "query": "最近美股哪些方向表现比较强，我想先学习一下",
+    "expectedTools": ["market_overview", "etf_discovery", "stock_screener"],
+    "requiredEvidenceTypes": ["MARKET_DATA"],
+    "requiredCitationDomains": ["stooq.com"],
+    "forbiddenPhrases": ["直接买入", "保证收益", "内部消息"]
+  },
+  {
+    "id": "single-stock-research",
+    "query": "英伟达现在适合长期关注吗？请结合市场表现、新闻和基本面说明",
+    "expectedTools": ["company_search", "market_data", "news_search", "fundamentals"],
+    "requiredEvidenceTypes": ["MARKET_DATA"],
+    "requiredCitationDomains": [],
+    "forbiddenPhrases": ["无风险", "必涨", "确定收益"]
+  },
+  {
+    "id": "portfolio-preference",
+    "query": "我是低风险、长期投资者，帮我看看可以从哪些 ETF 方向开始研究",
+    "expectedTools": ["market_overview", "etf_discovery"],
+    "requiredEvidenceTypes": ["MARKET_DATA"],
+    "requiredCitationDomains": ["stooq.com"],
+    "forbiddenPhrases": ["满仓", "梭哈", "短线暴利"]
+  },
+  {
+    "id": "memory-low-risk-apple",
+    "query": "苹果适合我继续关注吗？",
+    "userPreferences": {
+      "enabled": true,
+      "riskTolerance": "LOW",
+      "timeHorizon": "LONG_TERM"
+    },
+    "expectedTools": ["fundamentals", "sec_filing_retriever"],
+    "requiredEvidenceTypes": ["SEC_RAG"],
+    "requiredCitationDomains": ["sec.gov"],
+    "forbiddenPhrases": ["重仓", "稳赚", "闭眼买"]
+  }
+]
